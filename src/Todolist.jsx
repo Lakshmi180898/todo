@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "./ToDo.css"
+import "./Todo.css"
 
 const Todolist = () => {
   const [formvalues, setFormvalues] = useState({ todo: '', status: 'Pending' })
