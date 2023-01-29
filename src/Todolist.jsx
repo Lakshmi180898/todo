@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "./Todo.css"
 
 const Todolist = () => {
-  const [formvalues, setFormvalues] = useState({ todo: '', status: 'Pending' })
+  const [formvalues, setFormvalues] = useState({ todo: '', status: 'Pending', date:'', age:'' })
   const [store, setStore] = useState([])
   const [search, SetSearch] = useState('')
   const [disable, SetDisable] = useState(false)
@@ -46,9 +46,19 @@ const Todolist = () => {
                   <input type='text' className='form-control' name='todo' value={formvalues.todo} onChange={changehandler}
                     placeholder='Enter Todo....' />
                 </div>
+                <div className='form-group'>
+                  <input type='date' className='form-control' name='date' value={formvalues.date} onChange={changehandler}
+                    placeholder='Enter Date' />
+                </div>
+                <div className='form-group'>
+                  <input type='number' className='form-control' name='age' value={formvalues.age} onChange={changehandler}
+                    placeholder='Enter Age' />
+                </div>
+                
                 <div id="submit-button">
                   <button className='btn btn-info' type='submit'>Add</button>
                   {disable ? <div className='form-group' style={{ display: "inline-block" }}>
+
                     <select name='status' onChange={changehandler} className='form-control-lg'>
                       <option>Select Status</option>
                       <option>Pending</option>
@@ -75,6 +85,8 @@ const Todolist = () => {
                 <th>I.D</th>
                 <th>Status</th>
                 <th>TODO's</th>
+                <th>Date</th>
+                <th>Age</th>
                 <th>EDIT/DELETE</th>
               </tr>
             </thead>
@@ -94,6 +106,8 @@ const Todolist = () => {
                         <td>{index + 1}</td>
                         <td>{task.status}</td>
                         <td>{task.todo}</td>
+                        <td>{task.date}</td>
+                        <td>{task.age}</td>
                         <td>
                           {disable ? <i className='fas fa-edit mr-4' style={{ "color": "grey" }} disabled></i> : <i
                             className='fas fa-edit mr-4' onClick={() => edithandler(index)}></i>}
